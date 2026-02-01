@@ -329,42 +329,43 @@
         }
 
         .app-content {
-            max-width: 700px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
+        .app-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
         .app-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 24px;
+            width: 180px;
+            height: 180px;
+            border-radius: 36px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-            margin-bottom: 25px;
+            flex-shrink: 0;
+        }
+
+        .app-info {
+            text-align: left;
+        }
+
+        .app-info p {
+            margin-bottom: 20px;
+            color: var(--text-light);
         }
 
         .play-badge img {
+            height: 50px;
+            width: auto;
             transition: transform 0.3s;
         }
 
         .play-badge:hover img {
             transform: scale(1.05);
-        }
-
-        .app-features {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .app-feature {
-            text-align: center;
-        }
-
-        .app-feature span {
-            display: block;
-            color: var(--text-light);
-            font-size: 0.95rem;
         }
 
         /* App Download */
@@ -499,6 +500,19 @@
 
             .qr-code {
                 display: none;
+            }
+
+            .app-hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .app-info {
+                text-align: center;
+            }
+
+            .app-download {
+                justify-content: center;
             }
         }
 
@@ -665,32 +679,23 @@
                 <p>Supporting regulation through simple, meaningful tools</p>
             </div>
             <div class="app-content">
-                <img src="images/app-icon.png" alt="Sensory Regulation App icon" class="app-icon">
-                <p>A digital sensory regulation app designed to support students, staff, and families in understanding and managing sensory and emotional regulation.</p>
-                <div class="app-features">
-                    <div class="app-feature">
-                        <span>Interoceptive awareness</span>
-                    </div>
-                    <div class="app-feature">
-                        <span>Personalised sensory strategies</span>
-                    </div>
-                    <div class="app-feature">
-                        <span>Visual regulation supports</span>
-                    </div>
-                    <div class="app-feature">
-                        <span>Consistency across settings</span>
-                    </div>
-                </div>
-                <div style="margin-top: 40px;" class="app-download">
-                    <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="play-badge">
-                        <img src="images/google-play-badge.png" alt="Get it on Google Play" height="60">
-                    </a>
-                    <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" alt="QR code for Google Play Store">
-                        <span>Scan to download</span>
+                <div class="app-hero">
+                    <img src="images/app-icon.png" alt="Sensory Regulation App icon" class="app-icon">
+                    <div class="app-info">
+                        <p>A digital sensory regulation app designed to support students, staff, and families in understanding and managing sensory and emotional regulation.</p>
+                        <p>Interoceptive awareness | Personalised sensory strategies | Visual regulation supports | Consistency across settings</p>
+                        <div class="app-download">
+                            <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="play-badge">
+                                <img src="images/google-play-badge.png" alt="Get it on Google Play">
+                            </a>
+                            <div class="qr-code">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" alt="QR code for Google Play Store">
+                                <span>Scan to download</span>
+                            </div>
+                        </div>
+                        <p style="margin-top: 15px; margin-bottom: 0;"><em>Apple App Store coming soon.</em></p>
                     </div>
                 </div>
-                <p style="margin-top: 20px; color: var(--text-light);"><em>Apple App Store coming soon.</em></p>
             </div>
         </div>
     </section>
