@@ -3,73 +3,662 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achieve Therapy Ltd</title>
+    <title>Achieve Therapy | Specialist Occupational Therapy for Schools</title>
+    <meta name="description" content="Specialist Occupational Therapy services for schools and colleges. Sensory integration, trauma-informed practice, and staff training.">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6670;
+            --primary-dark: #3a525a;
+            --accent: #7fa3b0;
+            --warm: #c9a96e;
+            --text: #3a3a3a;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
         }
-        h1, h2, h3 {
-            color: #2c3e50;
+
+        img {
+            max-width: 100%;
+            height: auto;
         }
+
         .container {
-            background: #fff;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 85vh;
+            min-height: 500px;
+            background: linear-gradient(rgba(74, 102, 112, 0.7), rgba(74, 102, 112, 0.8)),
+                        url('images/hero-lake.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
             padding: 20px;
-            border-radius: 5px;
         }
-        a {
-            color: #3498db;
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
+
+        .hero .tagline {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--warm);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8983f;
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-content h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card ul {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            padding-left: 20px;
+        }
+
+        .service-card li {
+            margin-bottom: 8px;
+        }
+
+        .service-for {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+
+        /* Approach Section */
+        .approach {
+            background: var(--bg-light);
+        }
+
+        .approach-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .approach-intro .highlight {
+            background: var(--primary);
+            color: var(--white);
+            padding: 25px 40px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .approach-card {
+            background: var(--white);
+            padding: 35px 25px;
+            border-radius: 8px;
+            border-top: 4px solid var(--accent);
+        }
+
+        .approach-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .approach-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Sensory Room Section */
+        .sensory-room {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .sensory-room .section-title h2 {
+            color: var(--white);
+        }
+
+        .sensory-room .section-title p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .sensory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .sensory-grid img {
+            border-radius: 8px;
+        }
+
+        .sensory-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .sensory-content p {
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        /* App Section */
+        .app-section {
+            text-align: center;
+        }
+
+        .app-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .app-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .app-feature {
+            text-align: center;
+        }
+
+        .app-feature span {
+            display: block;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--bg-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .contact-details {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .contact-details p {
+            margin-bottom: 15px;
+        }
+
+        .contact-details strong {
+            color: var(--primary);
+        }
+
+        .contact-details a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-image img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
         footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            font-size: 0.9em;
-            color: #666;
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+
+            .about-grid,
+            .contact-grid,
+            .sensory-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid,
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Achieve Therapy Ltd</h1>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Achieve Therapy</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <h2>Welcome to Achieve Therapy</h2>
-        <p>Achieve Therapy Ltd specializes in Occupational Therapy services with a focus on sensory integration. We help individuals of all ages develop the skills they need to participate fully in daily activities and achieve their potential.</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Achieve Therapy</h1>
+            <p class="tagline">Experience, clarity, and a deep commitment to felt safety</p>
+            <a href="#contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
 
-        <h2>Our Services</h2>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Achieve Therapy</h2>
+                <p>Specialist Occupational Therapy for schools and colleges</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Founded on Experience</h3>
+                    <p>Achieve Therapy was founded by Loulette Schieke, a specialist Occupational Therapist with over two decades of experience supporting children and young people with complex sensory, emotional, and developmental needs.</p>
+                    <p>Loulette qualified as an Occupational Therapist in South Africa in 1999 and has since built a career focused on paediatric practice within education settings. Her work is grounded in post-graduate training in Sensory Integration (SI) and shaped by a strong commitment to trauma-informed, relationship-based care.</p>
+                    <p>After many years of running a successful independent practice, Achieve Therapy was established to focus specifically on high-impact work within schools and colleges. The aim is not only to support individual students, but to embed understanding, consistency, and practical strategies across the wider system around them.</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/hands-stone.jpg" alt="Supportive hands holding a stone, representing co-regulation and safety">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3>Occupational Therapy</h3>
-        <p>We provide evidence-based occupational therapy services that focus on enabling individuals to participate in the activities that matter most to them. Our approach is client-centered and holistic, considering all aspects of a person's life.</p>
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Therapeutic support designed for education settings</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <p class="service-for">For Leadership & Inclusion Teams</p>
+                    <h3>School & College Consultation</h3>
+                    <p>We work alongside schools to develop whole-setting approaches to sensory and emotional regulation. This may include:</p>
+                    <ul>
+                        <li>Sensory and environmental audits</li>
+                        <li>Consultation around behaviour, regulation, and participation</li>
+                        <li>Support with trauma-informed policy and practice</li>
+                        <li>Developing consistent, shared language across staff</li>
+                        <li>Creating sensory-aware learning environments</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <p class="service-for">For Individual Students</p>
+                    <h3>Direct 1:1 and Small Group OT</h3>
+                    <p>Following a thorough assessment process, we deliver sensory integration-informed OT within the school day, supporting areas such as:</p>
+                    <ul>
+                        <li>Sensory processing and regulation</li>
+                        <li>Emotional awareness and interoception</li>
+                        <li>Attention, engagement, and participation</li>
+                        <li>Motor planning, coordination, and postural control</li>
+                        <li>Independence in everyday school activities</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <p class="service-for">For School Staff</p>
+                    <h3>Professional Development & Training</h3>
+                    <p>We deliver engaging, accessible training that bridges theory and day-to-day practice. Sessions may include:</p>
+                    <ul>
+                        <li>Understanding sensory processing and regulation</li>
+                        <li>Trauma-informed and attachment-aware practice</li>
+                        <li>Practical co-regulation strategies in the classroom</li>
+                        <li>Interoception and body-based emotional awareness</li>
+                        <li>Supporting students with ASD, ADHD, and complex needs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3>Sensory Integration</h3>
-        <p>Our specialized sensory integration therapy helps individuals who experience challenges with:</p>
-        <ul>
-            <li>Processing sensory information</li>
-            <li>Regulating emotional responses</li>
-            <li>Managing daily activities</li>
-            <li>Participating in school or work</li>
-            <li>Social interaction and communication</li>
-        </ul>
+    <!-- Approach Section -->
+    <section id="approach" class="approach">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Approach</h2>
+                <p>An integrative, relational, and evidence-informed philosophy</p>
+            </div>
+            <div class="approach-intro">
+                <p>Our work draws on contemporary neuroscience, sensory integration theory, and attachment-informed practice. At the heart of our approach is a simple principle:</p>
+                <div class="highlight">
+                    "Felt safety is the foundation for learning, development, and participation."
+                </div>
+            </div>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <h3>Sensory Integration-Informed Practice</h3>
+                    <p>Sensory Integration focuses on how the brain organises and interprets sensory information from the body and environment. Our assessments and interventions are grounded in SI principles to address foundational sensory needs, rather than focusing solely on surface-level behaviours.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Trauma-Informed & Relationship-Based Care</h3>
+                    <p>We recognise that behaviour is communication. Our work prioritises predictability and safety, co-regulation before self-regulation, and attuned, trusting relationships. We draw on Polyvagal-informed practice and PACE (Playfulness, Acceptance, Curiosity, Empathy) frameworks.</p>
+                </div>
+                <div class="approach-card">
+                    <h3>Interoceptive Awareness</h3>
+                    <p>Interoception is the ability to notice and interpret internal body signals. We explicitly teach students to notice body signals, link sensations to emotions and needs, and choose appropriate regulation strategies. This is central to developing long-term self-regulation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3>Digital Solutions</h3>
-        <p>We're proud to offer the Sensory Regulation app, a digital tool designed to support sensory regulation and emotional management. Available on Google Play and coming soon to the App Store.</p>
+    <!-- Sensory Room Section -->
+    <section class="sensory-room">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sensory Integration Environments</h2>
+                <p>Creating spaces that support regulation</p>
+            </div>
+            <div class="sensory-grid">
+                <div class="sensory-content">
+                    <h3>Therapeutic Spaces</h3>
+                    <p>We can advise on the design and use of sensory spaces within your school, ensuring they are purposeful, safe, and aligned with therapeutic goals.</p>
+                    <p>A well-designed sensory environment provides opportunities for vestibular and proprioceptive input, supports emotional regulation, and creates a predictable space where students feel safe to explore and learn.</p>
+                </div>
+                <img src="images/sensory-room.jpg" alt="A sensory integration room with therapeutic equipment">
+            </div>
+        </div>
+    </section>
 
-        <h2>Contact Us</h2>
-        <p><strong>Achieve Therapy Ltd</strong><br>
-        Email: info@achievetherapy.com</p>
+    <!-- App Section -->
+    <section class="app-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sensory Regulation App</h2>
+                <p>Supporting regulation through simple, meaningful tools</p>
+            </div>
+            <div class="app-content">
+                <p>We are developing a digital sensory regulation app designed to support students, staff, and families in understanding and managing sensory and emotional regulation.</p>
+                <div class="app-features">
+                    <div class="app-feature">
+                        <span>Interoceptive awareness</span>
+                    </div>
+                    <div class="app-feature">
+                        <span>Personalised sensory strategies</span>
+                    </div>
+                    <div class="app-feature">
+                        <span>Visual regulation supports</span>
+                    </div>
+                    <div class="app-feature">
+                        <span>Consistency across settings</span>
+                    </div>
+                </div>
+                <p style="margin-top: 30px; color: var(--text-light);"><em>More information coming soon.</em></p>
+            </div>
+        </div>
+    </section>
 
-        <p>For app support or inquiries:<br>
-        Email: support@achievetherapy.com</p>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+                <p>We welcome enquiries from schools, colleges, and local authorities</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Ready to enhance your therapeutic provision?</h3>
+                    <p>Whether you're looking for consultation, direct therapy services, or staff training, we'd love to hear from you. We work with schools and colleges to create sustainable, practical approaches to supporting student wellbeing.</p>
+                    <div class="contact-details">
+                        <p><strong>Email:</strong><br>
+                        <a href="mailto:loulette@achievetherapy.co.uk">loulette@achievetherapy.co.uk</a></p>
+                        <p><strong>Service Area:</strong><br>
+                        Supporting schools and colleges across Berkshire, Surrey, and Greater London</p>
+                    </div>
+                </div>
+                <div class="contact-image">
+                    <img src="images/blocks-therapy.jpg" alt="Collaborative therapy session with wooden blocks">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <footer>
-            <p><em>Achieve Therapy Ltd is registered in England and Wales</em><br>
-            <em>Registration number available upon request</em></p>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p><strong>Achieve Therapy Ltd</strong></p>
+            <p>Registered in England and Wales</p>
             <p><a href="/privacy-policy.html">Privacy Policy</a></p>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>
