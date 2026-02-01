@@ -340,6 +340,33 @@
             font-size: 0.95rem;
         }
 
+        /* App Download */
+        .app-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .qr-code {
+            text-align: center;
+        }
+
+        .qr-code img {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+        }
+
+        .qr-code span {
+            display: block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
         /* Contact Section */
         .contact {
             background: var(--bg-light);
@@ -441,6 +468,10 @@
 
             .about-image {
                 order: -1;
+            }
+
+            .qr-code {
+                display: none;
             }
         }
 
@@ -622,8 +653,12 @@
                         <span>Consistency across settings</span>
                     </div>
                 </div>
-                <div style="margin-top: 40px;">
-                    <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="btn" style="margin-right: 15px;">Get it on Google Play</a>
+                <div style="margin-top: 40px;" class="app-download">
+                    <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="btn">Get it on Google Play</a>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" alt="QR code for Google Play Store">
+                        <span>Scan to download</span>
+                    </div>
                 </div>
                 <p style="margin-top: 20px; color: var(--text-light);"><em>Apple App Store coming soon.</em></p>
             </div>
