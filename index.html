@@ -58,10 +58,21 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo span {
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--primary);
-            text-decoration: none;
         }
 
         .nav-links {
@@ -494,7 +505,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <a href="#" class="logo">Achieve Therapy</a>
+            <a href="#" class="logo"><img src="images/logo.png" alt="Achieve Therapy logo"><span>Achieve Therapy</span></a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
