@@ -333,6 +333,22 @@
             margin: 0 auto;
         }
 
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin-bottom: 25px;
+        }
+
+        .play-badge img {
+            transition: transform 0.3s;
+        }
+
+        .play-badge:hover img {
+            transform: scale(1.05);
+        }
+
         .app-features {
             display: flex;
             justify-content: center;
@@ -649,7 +665,8 @@
                 <p>Supporting regulation through simple, meaningful tools</p>
             </div>
             <div class="app-content">
-                <p>We are developing a digital sensory regulation app designed to support students, staff, and families in understanding and managing sensory and emotional regulation.</p>
+                <img src="images/app-icon.png" alt="Sensory Regulation App icon" class="app-icon">
+                <p>A digital sensory regulation app designed to support students, staff, and families in understanding and managing sensory and emotional regulation.</p>
                 <div class="app-features">
                     <div class="app-feature">
                         <span>Interoceptive awareness</span>
@@ -665,7 +682,9 @@
                     </div>
                 </div>
                 <div style="margin-top: 40px;" class="app-download">
-                    <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="btn">Get it on Google Play</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" target="_blank" rel="noopener" class="play-badge">
+                        <img src="images/google-play-badge.png" alt="Get it on Google Play" height="60">
+                    </a>
                     <div class="qr-code">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://play.google.com/store/apps/details?id=com.achievetherapy.sensoryapp" alt="QR code for Google Play Store">
                         <span>Scan to download</span>
