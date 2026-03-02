@@ -377,6 +377,39 @@
             flex-wrap: wrap;
         }
 
+        /* Shop Section */
+        .shop-section {
+            background: var(--bg-light);
+        }
+
+        .shop-card {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .shop-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .shop-card p {
+            color: var(--text-light);
+            margin-bottom: 18px;
+        }
+
+        .shop-price {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
         .qr-code {
             text-align: center;
         }
@@ -540,6 +573,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#approach">Approach</a></li>
+                <li><a href="#shop">Shop</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
@@ -696,6 +730,23 @@
                         <p style="margin-top: 15px; margin-bottom: 0;"><em>Apple App Store coming soon.</em></p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="shop-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop</h2>
+                <p>Digital resources for interoception and regulation support</p>
+            </div>
+            <div class="shop-card">
+                <h3>The Body Compass: The Workbook for Navigation Your Inner Signals</h3>
+                <p>A practical PDF guide to support interoceptive awareness and body-based regulation work with children and young people.</p>
+                <div class="shop-price">GBP 4.00</div>
+                <!-- Replace with live-mode Stripe link when ready -->
+                <a href="https://buy.stripe.com/test_3cIcMY6AL9q4dMv5004Rq00" target="_blank" rel="noopener" class="btn">Buy PDF</a>
             </div>
         </div>
     </section>
