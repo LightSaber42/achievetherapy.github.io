@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notea | Secure AI Workbench for Therapists, SEN Schools, and Case Managers</title>
+    <meta name="description" content="Notea is a secure AI workbench for UK education and healthcare teams. Keep files in your own Microsoft 365 or Google Workspace, enforce your clinical voice, and capture evidence offline in the field.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #17313b;
+            --ink-soft: #42606a;
+            --sea: #4a6670;
+            --sky: #7fa3b0;
+            --sand: #c9a96e;
+            --mist: #eef3f4;
+            --white: #ffffff;
+            --line: #d6e1e4;
+            --panel: #f8fafb;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.65;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at top right, rgba(127, 163, 176, 0.18), transparent 28%),
+                linear-gradient(180deg, #f7fbfc 0%, #ffffff 45%, #f3f6f7 100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            border-bottom: 1px solid rgba(214, 225, 228, 0.9);
+        }
+
+        .topbar-inner {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--sea), #254955);
+            box-shadow: 0 12px 24px rgba(37, 73, 85, 0.18);
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .top-links a {
+            text-decoration: none;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+        }
+
+        .top-links a:hover {
+            color: var(--ink);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            border-radius: 999px;
+            padding: 14px 24px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, var(--sea), #284b56);
+            color: var(--white);
+            box-shadow: 0 14px 28px rgba(42, 78, 89, 0.2);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.86);
+            color: var(--ink);
+            border: 1px solid var(--line);
+        }
+
+        .hero {
+            padding: 88px 0 64px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+            gap: 38px;
+            align-items: stretch;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(127, 163, 176, 0.16);
+            color: #31515d;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero-copy {
+            padding: 24px 0;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5.2rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 22px;
+            max-width: 11ch;
+        }
+
+        .hero p.lead {
+            font-size: 1.2rem;
+            color: var(--ink-soft);
+            max-width: 38rem;
+            margin-bottom: 28px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .hero-meta {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+        }
+
+        .hero-panel {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(238, 243, 244, 0.94));
+            border: 1px solid rgba(214, 225, 228, 0.9);
+            border-radius: 30px;
+            padding: 28px;
+            box-shadow: 0 30px 70px rgba(32, 61, 71, 0.12);
+        }
+
+        .signal {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.84rem;
+            font-weight: 700;
+            color: #2d5c3d;
+            background: rgba(86, 145, 104, 0.12);
+            border-radius: 999px;
+            padding: 7px 12px;
+            margin-bottom: 16px;
+        }
+
+        .panel-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .panel-copy {
+            color: var(--ink-soft);
+            margin-bottom: 20px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .bullet-list li {
+            border-top: 1px solid var(--line);
+            padding-top: 12px;
+            color: var(--ink-soft);
+        }
+
+        .bullet-list strong {
+            color: var(--ink);
+        }
+
+        section {
+            padding: 32px 0 72px;
+        }
+
+        .section-head {
+            margin-bottom: 26px;
+            max-width: 760px;
+        }
+
+        .section-kicker {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.84rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--sea);
+            margin-bottom: 10px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .section-head p {
+            color: var(--ink-soft);
+            font-size: 1.08rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(214, 225, 228, 0.95);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 16px 40px rgba(33, 59, 68, 0.07);
+        }
+
+        .card-mark {
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 800;
+            color: var(--white);
+            background: linear-gradient(135deg, var(--sky), var(--sea));
+        }
+
+        .card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: var(--ink-soft);
+        }
+
+        .stripe {
+            background: linear-gradient(135deg, #17313b, #375864);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 34px;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+            gap: 28px;
+            align-items: center;
+            box-shadow: 0 28px 60px rgba(16, 32, 39, 0.22);
+        }
+
+        .stripe h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .stripe p,
+        .stripe li {
+            color: rgba(255, 255, 255, 0.86);
+        }
+
+        .stripe ul {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .audience {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .audience span {
+            display: inline-flex;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--mist);
+            border: 1px solid var(--line);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .process {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .step {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 999px;
+            margin-bottom: 12px;
+            background: var(--sea);
+            color: var(--white);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 700;
+        }
+
+        .step h3 {
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: var(--ink-soft);
+            font-size: 0.96rem;
+        }
+
+        .cta {
+            padding-bottom: 88px;
+        }
+
+        .cta-box {
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(214, 225, 228, 0.95);
+            border-radius: 30px;
+            padding: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            box-shadow: 0 18px 50px rgba(33, 59, 68, 0.08);
+        }
+
+        .cta-box p {
+            color: var(--ink-soft);
+            max-width: 42rem;
+        }
+
+        footer {
+            border-top: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.82);
+        }
+
+        .footer-inner {
+            min-height: 92px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            color: var(--ink-soft);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--ink);
+        }
+
+        @media (max-width: 920px) {
+            .hero-grid,
+            .grid-2,
+            .stripe,
+            .process {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .topbar-inner {
+                padding: 12px 0;
+            }
+
+            .top-links {
+                gap: 12px;
+            }
+
+            .hero {
+                padding-top: 60px;
+            }
+
+            .hero h1 {
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a href="/" class="brand">
+                <span class="brand-mark">N</span>
+                <span>Notea by Achieve Therapy</span>
+            </a>
+            <nav class="top-links">
+                <a href="/">Achieve Therapy</a>
+                <a href="https://notea.achievetherapy.co.uk/auth/signin">Sign in</a>
+                <a href="https://notea.achievetherapy.co.uk/help">Help</a>
+                <a href="mailto:loulette@achievetherapy.co.uk?subject=Notea%20enquiry" class="button button-secondary">Book a demo</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <div class="eyebrow">UK Education and Healthcare</div>
+                    <h1>The AI workbench that leaves your data in your hands.</h1>
+                    <p class="lead">Notea helps therapists, SEN schools, and clinical case managers turn raw notes, voice dictation, and evidence into consistent reports without moving ownership of files away from their organisation.</p>
+                    <div class="hero-actions">
+                        <a href="https://notea.achievetherapy.co.uk/auth/signin" class="button button-primary">Start with Microsoft or Google</a>
+                        <a href="#workflow" class="button button-secondary">See how onboarding works</a>
+                    </div>
+                    <p class="hero-meta">Marketing is served statically from GitHub Pages. Workspace setup, sign-in, onboarding, and Stripe billing stay inside the secured Railway application.</p>
+                </div>
+                <aside class="hero-panel">
+                    <div class="signal">Zero-trust public surface</div>
+                    <h2 class="panel-title">Built to reduce exposure, not expand it.</h2>
+                    <p class="panel-copy">The public page contains no application secrets, no database connectivity, and no clinical records. Once a buyer is ready, Notea hands them into the authenticated app for workspace creation and billing.</p>
+                    <ul class="bullet-list">
+                        <li><strong>Marketing:</strong> static route on achievetherapy.co.uk</li>
+                        <li><strong>Identity:</strong> Microsoft and Google OAuth inside the app</li>
+                        <li><strong>Billing:</strong> Stripe checkout handled in the onboarding flow</li>
+                        <li><strong>Workspace:</strong> secure Railway-hosted Notea environment</li>
+                    </ul>
+                </aside>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-kicker">Why Notea</div>
+                    <h2>Purpose-built for organisations that cannot compromise on governance.</h2>
+                    <p>Most AI tooling asks teams to upload sensitive files into another vendor’s silo and accept generic output. Notea is designed for organisations that need data sovereignty, cryptographic control, and consistent reporting standards.</p>
+                </div>
+                <div class="audience">
+                    <span>Occupational therapists</span>
+                    <span>Speech and language teams</span>
+                    <span>SEN schools and colleges</span>
+                    <span>Clinical case managers</span>
+                    <span>Local authority providers</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container grid-2">
+                <article class="card">
+                    <div class="card-mark">01</div>
+                    <h3>Data sovereignty by default</h3>
+                    <p>Notea does not hold your files hostage. Generated reports and source materials can remain inside your own Microsoft 365 or Google Workspace tenancy, so your organisation keeps custody of the records it depends on.</p>
+                </article>
+                <article class="card">
+                    <div class="card-mark">02</div>
+                    <h3>Absolute security posture</h3>
+                    <p>Built for GDPR compliance with EU data residency, AES-256-GCM field-level encryption, and Bring Your Own Key support for organisations that need stronger separation of duties and cryptographic control.</p>
+                </article>
+                <article class="card">
+                    <div class="card-mark">03</div>
+                    <h3>AI that follows your clinical voice</h3>
+                    <p>Hierarchical prompt management lets administrators define organisation-wide instructions, terminology, and templates so reports stay aligned with your preferred tone, format, and professional standards.</p>
+                </article>
+                <article class="card">
+                    <div class="card-mark">04</div>
+                    <h3>Offline-first mobile companion</h3>
+                    <p>Capture evidence and dictate notes in the field even when signal is poor. The mobile workflow is designed to queue securely offline and sync once a connection becomes available.</p>
+                </article>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="stripe">
+                    <div>
+                        <div class="section-kicker" style="color: rgba(255,255,255,0.72);">Security Model</div>
+                        <h2>Public marketing stays air-gapped from the clinical application.</h2>
+                        <p>This route is intentionally static. There are no server-side actions here, no secrets, and no direct database access. Prospects discover Notea on Achieve Therapy’s GitHub Pages site, then move into the authenticated app only when they are ready to create a workspace.</p>
+                    </div>
+                    <ul>
+                        <li>Static site delivery through GitHub Pages and CDN caching</li>
+                        <li>Authenticated application and onboarding flow on Railway</li>
+                        <li>Stripe subscription created only after verified sign-in</li>
+                        <li>No public-facing billing logic on the marketing page</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow">
+            <div class="container">
+                <div class="section-head">
+                    <div class="section-kicker">Onboarding Flow</div>
+                    <h2>Identity first. Billing second. Workspace after that.</h2>
+                    <p>This keeps Stripe checkout attached to a verified Microsoft or Google identity and avoids creating anonymous or weakly-linked customer records.</p>
+                </div>
+                <div class="process">
+                    <article class="step">
+                        <div class="step-number">1</div>
+                        <h3>Open the secure app</h3>
+                        <p>Click through to the Railway-hosted Notea application.</p>
+                    </article>
+                    <article class="step">
+                        <div class="step-number">2</div>
+                        <h3>Sign in with Microsoft or Google</h3>
+                        <p>Use an existing organisational identity to establish account ownership.</p>
+                    </article>
+                    <article class="step">
+                        <div class="step-number">3</div>
+                        <h3>Create your workspace</h3>
+                        <p>New users create an organisation and configure integrations, security, and terminology.</p>
+                    </article>
+                    <article class="step">
+                        <div class="step-number">4</div>
+                        <h3>Activate billing in onboarding</h3>
+                        <p>Stripe checkout is launched from inside the authenticated application before full access is granted.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <div class="cta-box">
+                    <div>
+                        <div class="section-kicker">Start Notea</div>
+                        <h2 style="font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 10px;">Ready to set up a Notea workspace?</h2>
+                        <p>Use your existing Microsoft or Google account to sign in, create your organisation, and complete Stripe setup inside the secure app.</p>
+                    </div>
+                    <a href="https://notea.achievetherapy.co.uk/auth/signin" class="button button-primary">Go to secure sign-in</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <div>Notea by Achieve Therapy Ltd</div>
+            <div class="footer-links">
+                <a href="/">Achieve Therapy</a>
+                <a href="https://notea.achievetherapy.co.uk/help">Help</a>
+                <a href="/privacy-policy.html">Privacy Policy</a>
+                <a href="mailto:loulette@achievetherapy.co.uk?subject=Notea%20enquiry">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
